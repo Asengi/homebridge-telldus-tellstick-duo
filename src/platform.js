@@ -295,18 +295,19 @@ module.exports = class TelldusPlatform {
             }
 
             if (config) {
-                if (config.model == 'EA4C')
-                    config.model = 'temperature';
-
-                if (config.model == '1A2D')
-                    config.model = 'temperaturehumidity';
-
                 config.id = item.id;
                 config.name = config.name;
                 config.type = 'sensor';
                 config.protocol = item.protocol;
                 config.model = item.model;
                 config.id = item.id;
+
+                if (config.model == 'EA4C')
+                    config.model = 'temperature';
+
+                if (config.model == '1A2D')
+                    config.model = 'temperaturehumidity';
+
                 config.uuid = this.generateUUID(sprintf('%s:%s:%s', item.protocol, item.model, item.id));
 
                 if (item.data) {
@@ -381,13 +382,14 @@ module.exports = class TelldusPlatform {
                 if (accessory != undefined) {
                     this.debug('Sensor event:', JSON.stringify({id:id, protocol:protocol, type:type, value:value, timestamp:timestamp}));
 
-                    if (protocol == 'temperature' || (protocol == 'temperaturehumidity' && type == 1)) {
+                    if (protocol == 'temperature' || protocol == 'EA4C' || (protocol == 'temperaturehumidity' && type == 1) || (protocol == '1A2D' && type ==$
                         accessory.emit('temperatureChanged', parseFloat(value), timestamp);
                     }
 
-                    if (protocol == 'humidity' || (protocol == 'temperaturehumidity' && type == 2)) {
+                    if (protocol == 'humidity' || protocol == '1A2D' || (protocol == 'temperaturehumidity' && type == 2)) {
                         accessory.emit('humidityChanged', parseFloat(value), timestamp);
                     }
+
                 }
 
             });
