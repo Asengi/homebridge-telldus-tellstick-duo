@@ -85,17 +85,17 @@ module.exports = class Switch extends Device {
 
         telldus.turnOnSync(this.config.id);
 
-        setImmediate(() => {
-            telldus.turnOnSync(this.config.id);
-        });
+//        setImmediate(() => {
+//            telldus.turnOnSync(this.config.id);
+//        });
 
-        setImmediate(() => {
-            telldus.turnOnSync(this.config.id);
-        });
+//        setImmediate(() => {
+//            telldus.turnOnSync(this.config.id);
+//        });
 
-        this.timer.setTimer(800, () => {
-            telldus.turnOnSync(this.config.id);
-        });
+//        this.timer.setTimer(800, () => {
+//            telldus.turnOnSync(this.config.id);
+//        });
 
         this.log(sprintf('Device %s turned on.', this.config.name));
     }
@@ -106,17 +106,17 @@ module.exports = class Switch extends Device {
 
         telldus.turnOffSync(this.config.id);
 
-        setImmediate(() => {
-            telldus.turnOffSync(this.config.id);
-        });
+  //      setImmediate(() => {
+  //          telldus.turnOffSync(this.config.id);
+  //      });
 
-        setImmediate(() => {
-            telldus.turnOffSync(this.config.id);
-        });
+  //      setImmediate(() => {
+  //          telldus.turnOffSync(this.config.id);
+  //      });
 
-        this.timer.setTimer(800, () => {
-            telldus.turnOffSync(this.config.id);
-        });
+  //      this.timer.setTimer(800, () => {
+  //          telldus.turnOffSync(this.config.id);
+  //      });
 
         this.log(sprintf('Device %s turned off.', this.config.name));
     }
