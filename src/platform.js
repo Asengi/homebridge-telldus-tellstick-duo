@@ -382,7 +382,7 @@ module.exports = class TelldusPlatform {
                 if (accessory != undefined) {
                     this.debug('Sensor event:', JSON.stringify({id:id, protocol:protocol, type:type, value:value, timestamp:timestamp}));
 
-                    if (protocol == 'temperature' || protocol == 'EA4C' || (protocol == 'temperaturehumidity' && type == 1) || (protocol == '1A2D' && type ==$
+                    if (protocol == 'temperature' || protocol == 'EA4C' || (protocol == 'temperaturehumidity' && type == 1) || (protocol == '1A2D' && type == 1)) {
                         accessory.emit('temperatureChanged', parseFloat(value), timestamp);
                     }
 
